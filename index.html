@@ -63,6 +63,20 @@
 			background: none !important;
 			padding: 0 !important;
 		}
+		
+	</style>
+	<style>
+		@media (max-width: 600px){
+	.banner_section .slide .item{
+		background-repeat: no-repeat !important;
+    /* background-attachment: fixed !important; */
+    background-position: center !important;
+	background-size: cover !important;
+	height: 171px !important;
+	}
+
+
+}
 	</style>
 	<link rel='stylesheet' id='ht_ctc_main_css-css'
 		href='wp-content/plugins/click-to-chat-for-whatsapp/new/inc/assets/css/main.css?ver=3.29' type='text/css'
@@ -580,7 +594,7 @@
 										</ul>
 										<div class="submit-btn-wrap">
 											<p><input class="wpcf7-form-control has-spinner wpcf7-submit" type="submit"
-													value="Submit">
+												id="btnSubmit1"	value="Submit">
 											</p>
 										</div>
 									</div>
@@ -694,7 +708,7 @@
 											</ul>
 											<div class="submit-btn-wrap">
 												<p><input class="wpcf7-form-control has-spinner wpcf7-submit"
-														type="submit" value="Submit">
+													id="btnSubmit2"	type="submit" value="Submit">
 												</p>
 											</div>
 										</div>
@@ -1815,7 +1829,7 @@
 												</ul>
 												<div class="submit-btn-wrap">
 													<p><input class="wpcf7-form-control has-spinner wpcf7-submit"
-															type="submit" value="Submit">
+														id="btnSubmit3"	type="submit" value="Submit">
 													</p>
 												</div>
 											</div>
@@ -1991,38 +2005,51 @@
 
 
 	<script>
-		const scriptURL = 'https://script.google.com/macros/s/AKfycbxduRpewfGCHHPlya6_qSBvCCl1GqAdC4oj1VxHWtJ7vwVjO4hUsjjFaVthGBwuJg09/exec'
-		const form = document.forms['google-sheet3']
-
-		form.addEventListener('submit', e => {
-			e.preventDefault()
-			fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-			    .then(() => { window.location.reload(); })
-				.then(response => alert("Thank you! your form is submitted successfully."))
-				.catch(error => console.error('Error!', error.message))
-		})
-	</script>
-	<script>
+		
 		const scriptURL1 = 'https://script.google.com/macros/s/AKfycbxduRpewfGCHHPlya6_qSBvCCl1GqAdC4oj1VxHWtJ7vwVjO4hUsjjFaVthGBwuJg09/exec'
 		const form1 = document.forms['google-sheet1']
 
 		form1.addEventListener('submit', e => {
 			e.preventDefault()
+			$("#btnSubmit1").attr("disabled", true);
 			fetch(scriptURL1, { method: 'POST', body: new FormData(form1) })
-			     .then(() => { window.location.reload(); })
-				.then(response => alert("Thank you! your form is submitted successfully."))
+			.then(response => {
+				alert("Thank you! your form is submitted successfully.")
+				window.location.reload();
+		})
+			// .then(() => { window.location.reload(); })
+				.catch(error => console.error('Error!', error.message))
+		})
+	</script>
+	<script>
+		const scriptURL2 = 'https://script.google.com/macros/s/AKfycbxduRpewfGCHHPlya6_qSBvCCl1GqAdC4oj1VxHWtJ7vwVjO4hUsjjFaVthGBwuJg09/exec'
+		const form2 = document.forms['google-sheet2']
+
+		form2.addEventListener('submit', async e => {
+			e.preventDefault()
+			$("#btnSubmit2").attr("disabled", true);
+			fetch(scriptURL2, { method: 'POST', body: new FormData(form2) })
+			.then(response => {
+				alert("Thank you! your form is submitted successfully.")
+				window.location.reload();
+		})
+			// .then(() => { window.location.reload(); })
 				.catch(error => console.error('Error!', error.message))
 		})
 	</script>
 	<script>
 		const scriptURL3 = 'https://script.google.com/macros/s/AKfycbxduRpewfGCHHPlya6_qSBvCCl1GqAdC4oj1VxHWtJ7vwVjO4hUsjjFaVthGBwuJg09/exec'
-		const form3 = document.forms['google-sheet1']
+		const form3 = document.forms['google-sheet3']
 
-		form1.addEventListener('submit', e => {
+		form3.addEventListener('submit', e => {
 			e.preventDefault()
+			$("#btnSubmit3").attr("disabled", true);
 			fetch(scriptURL3, { method: 'POST', body: new FormData(form3) })
-			    .then(() => { window.location.reload(); })
-				.then(response => alert("Thank you! your form is submitted successfully."))
+			.then(response => {
+				alert("Thank you! your form is submitted successfully.")
+				window.location.reload();
+		})
+			// .then(() => { window.location.reload(); })
 				.catch(error => console.error('Error!', error.message))
 		})
 	</script>
